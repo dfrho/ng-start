@@ -11,13 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
   </head>
-  <body ng-app="ngStart" ng-init="message = 'Hello, World!'">
-    <h1>{{ message }}</h1>
+  <body ng-app="ngStart" ng-controller="classifiedsCtrl">
+    <h1>{{ name }}</h1>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="components/classifieds.ctr.js"></script>
   </body>
 </html>
