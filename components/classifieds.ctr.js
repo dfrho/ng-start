@@ -5,7 +5,10 @@
     .module('ngStart')
     .controller('classifiedsCtrl', ($scope) => {
 
-      $scope.name = "David";
+      $scope.name = {
+        first: "David",
+        last: "Rhodes"
+      };
     });
 
 
