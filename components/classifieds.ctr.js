@@ -16,6 +16,14 @@
       $scope.closeSidebar = () => {
         $mdSidenav('left').close();
       };
+
+      $scope.saveClassified = classified => {
+        if (classified.movie_title && classified.price && classified.description && classified.image){
+          $scope.classifieds.push(classified);
+          $scope.classified = {};
+          $scope.closeSidebar();
+        }
+      };
     });
 
 })();
