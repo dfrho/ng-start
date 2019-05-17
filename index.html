@@ -4,15 +4,64 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
+    <title>Movie Poster Deals</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ngStart</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" media="all" href="node_modules/mdi/css/materialdesignicons.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
-  <body ng-app="ngStart" ng-controller="classifiedsCtrl">
-    <hello-world></hello-world>
+  <body ng-app="Movie Poster Deals" ng-controller="classifiedsCtrl">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <p><strong>Movie Poster Deals</strong></p>
+        <md-button><md-icon class="mdi mdi-plus-circle"></md-icon> New Classified</md-button>
+      </div>
+    </md-toolbar>
+
+    <p ng-show="showName">David Rhodes</p>
+
+    <md-content class="md-padding" layout="row" layout-align="center" layout-wrap>
+      <md-card ng-repeat="classified in classifieds" flex="30">
+        <img ng-src="{{ classified.image }}" alt="random">
+        <md-card-content>
+
+          <div layout="row">
+            <md-button ng-click="showContact = true" ng-show="!showContact">Contact</md-button>
+            <md-button ng-click="showContact = false" ng-show="showContact">Details</md-button>
+            <md-button ng-click="showAdmin = true" ng-show="!showAdmin">Show Admin</md-button>
+            <md-button ng-click="showAdmin = false" ng-show="showAdmin">Close Admin</md-button>
+          </div>
+
+          <div class="classied-admin" ng-if="showAdmin">
+              <h3>Admin</h3>
+              <div layout="row">
+                  <md-button class="md-primary">Edit</md-button>
+                  <md-button class="md-warn">Delete</md-button>
+              </div>
+          </div>
+
+          <div class="classified-info" ng-show="!showContact">
+            <h2 class="md-title">{{ classified.movie_title }}</h2>
+            <h3>{{ classified.price }}</h3>
+            <p>{{ classified.description }}</p>
+          </div>
+
+          <div class="classified-contact" ng-show="showContact" >
+            <p><md-icon class="mdi mdi-account"></md-icon>{{ classified.first_name + ' ' + classified.last_name }}</p>
+            <p><md-icon class="mdi mdi-phone"></md-icon>{{ classified.phone }}</p>
+            <p><md-icon class="mdi mdi-email"></md-icon>{{ classified.email }}</p>
+          </div>
+
+
+
+        </md-card-content>
+      </md-card>
+
+    </md-content>
+
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->

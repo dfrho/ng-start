@@ -1,0 +1,16 @@
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.material-icons {
+  margin-bottom: 14px;
+}
+
+.md-toolbar-tools {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+

@@ -1,5 +1,5 @@
 angular
-  .module('ngStart', ["ngMaterial"])
+  .module('Movie Poster Deals', ["ngMaterial"])
   .config( $mdThemingProvider => {
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
@@ -7,6 +7,6 @@ angular
   })
   .directive('helloWorld', () => {
     return {
-      template: '<h1>Hello, world!</h1>'
+      template: '<h1>{{ message }}</h1>'
     }
   });
