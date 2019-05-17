@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('ngStart')
+    .module('moviePosterDeals')
     .factory('classifiedsFactory', $http => {
 
       const getClassifieds = () => {

@@ -1,5 +1,5 @@
 angular
-  .module('Movie Poster Deals', ["ngMaterial"])
+  .module('moviePosterDeals', ["ngMaterial"])
   .config( $mdThemingProvider => {
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
