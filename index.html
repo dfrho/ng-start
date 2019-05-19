@@ -105,7 +105,7 @@
 
     <md-content class="md-padding" layout="row" layout-align="center"
       layout-wrap>
-      <md-card ng-repeat="classified in classifieds | filter: classifiedsFilter | filter: genre" flex="30">
+      <md-card class="classified" ng-repeat="classified in classifieds | filter: classifiedsFilter | filter: genre" flex="30">
         <img ng-src="{{ classified.image }}" alt="{{ classified.movie_title}}" style="border-top-left-radius: 4px; border-top-right-radius: 4px">
         <md-card-content>
 
@@ -131,7 +131,7 @@
           <div class="classified-info" ng-show="!showContact">
             <h2 class="md-title">{{ classified.movie_title }}</h2>
             <h4>{{ classified.genres.join(', ') }}</h4>
-            <h4>{{ classified.price }}</h4>
+            <h4>{{ classified.price | currency }}</h4>
             <p>{{ classified.description }}</p>
           </div>
 

@@ -14,3 +14,29 @@ button {
   align-items: center;
 }
 
+.classified.ng-enter, .classified.ng-move {
+  transition: 0.4s all;
+  opacity: 0;
+  transform: translate(0px, 36px);
+}
+
+.classified.ng-enter.ng-enter-active, .classified.ng.move.ng-move-active {
+  opacity: 1;
+  transform: translate(0px, 0px);
+}
+
+.classified.ng-leave {
+  animation: 0.4s fade_classified;
+}
+
+@keyframes fade_classified {
+  from {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+  to {
+    opacity: 0;
+    transform: translate(0px, 36px);
+  }
+}
+
