@@ -17,7 +17,7 @@
         $mdSidenav('left').close();
       };
 
-      $scope.saveClassified = classified => {
+      $scope.createClassified = classified => {
         if (classified.movie_title && classified.price && classified.description && classified.image){
           // TODO: add user auth, current user (remove this dummy data for UI step)
           const dummyCurrentUser = {
@@ -31,14 +31,33 @@
           $scope.classified = {};
           $scope.closeSidebar();
 
-          $mdToast.show(
-            $mdToast.simple()
-            .content("Classified Saved!")
-            .position('top right')
-            .hideDelay(3000)
-          );
+          showToast('Classified Saved!');
         }
       };
+
+    $scope.editClassified = classified => {
+      $scope.editing = true;
+      $scope.openSidebar();
+      $scope.classified = classified;
+    };
+
+    $scope.saveEdit = () => {
+      $scope.editing = false;
+      $scope.classified = {};
+      $scope.closeSidebar();
+
+      showToast("Classified Edit Saved!");
+
+    }
+
+    const showToast = message => {
+      $mdToast.show(
+        $mdToast.simple()
+        .content(message)
+        .position('top right')
+        .hideDelay(3000)
+      );
+    }
 
     });
 })();

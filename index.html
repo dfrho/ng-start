@@ -46,16 +46,18 @@
             <label for="image">Image URL</label>
             <input type="text" id="image" md-autofocus ng-model="classified.image">
           </md-input-container>
-          <md-button class="md-primary" ng-click="saveClassified(classified)">
+          <md-button class="md-primary" ng-if="!editing" ng-click="saveClassified(classified)">
             Save
           </md-button>
-          <md-button class="md-primary">
+          <md-button ng-click="saveEdit()" class="md-primary" ng-if="editing">
             Save Edit
           </md-button>
           <md-button class="md-warn" ng-click="closeSidebar()">
             Cancel
           </md-button>
         </form>
+
+        <pre>{{ classified | json }}</pre>
       </md-content>
     </md-sidenav>
 
@@ -74,7 +76,7 @@
           <div class="classied-admin" ng-if="showAdmin">
               <h3>Admin</h3>
               <div layout="row">
-                  <md-button class="md-primary">Edit</md-button>
+                  <md-button ng-click="editClassified(classified)" ng-class="md-primary">Edit</md-button>
                   <md-button class="md-warn">Delete</md-button>
               </div>
           </div>
