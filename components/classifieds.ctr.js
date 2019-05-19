@@ -3,7 +3,7 @@
 
   angular
     .module('moviePosterDeals')
-    .controller('classifiedsCtrl', ($scope, classifiedsFactory, $mdSidenav, $mdToast) => {
+    .controller('classifiedsCtrl', ($scope, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) => {
       classifiedsFactory.getClassifieds()
       .then(foundData => {
         $scope.classifieds = foundData.data
@@ -40,6 +40,22 @@
       $scope.openSidebar();
       $scope.classified = classified;
     };
+
+    $scope.deleteClassified = (event, classified) => {
+      const confirm = $mdDialog.confirm()
+      .title(`Are you sure you want to delete ${classified.movie_title}?`)
+      .ok(`yes`)
+      .cancel(`no`)
+      .targetEvent(event);
+      $mdDialog.show(confirm)
+      .then(() => {
+        const foundIndex = $scope.classifieds.indexOf(classified);
+        $scope.classifieds.splice(foundIndex, 1);
+      },
+      () => {
+        showToast("Delete Canceled!");
+      });
+    }
 
     $scope.saveEdit = () => {
       $scope.editing = false;
