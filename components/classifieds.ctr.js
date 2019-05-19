@@ -6,7 +6,8 @@
     .controller('classifiedsCtrl', ($scope, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) => {
       classifiedsFactory.getClassifieds()
       .then(foundData => {
-        $scope.classifieds = foundData.data
+        $scope.classifieds = foundData.data;
+        $scope.genres = getGenres($scope.classifieds);
       });
 
       $scope.openSidebar = () => {
@@ -21,9 +22,9 @@
         if (classified.movie_title && classified.price && classified.description && classified.image){
           // TODO: add user auth, current user (remove this dummy data for UI step)
           const dummyCurrentUser = {
-            name: 'David Rhodes',
-            phone: '646-477-6360',
-            email: 'rhodesdav@gmail.com'
+            name: 'David Rhino',
+            phone: '646-497-4444',
+            email: 'xxxx@gmail.com'
           };
           classified.contact = dummyCurrentUser;
 
@@ -73,6 +74,17 @@
         .position('top right')
         .hideDelay(3000)
       );
+    }
+
+    const getGenres = classifieds => {
+      const genres = [];
+      angular.forEach(classifieds, item => {
+        angular.forEach(_.uniq(item.genres), genre => {
+          genres.push(genre);
+        })
+      });
+
+      return _.uniq(genres);
     }
 
     });
