@@ -32,21 +32,21 @@
         <form>
           <md-input-container>
             <label for="title">Title</label>
-            <input type="text" id="title" md-autofocus>
+            <input type="text" id="title" md-autofocus ng-model="classified.movie_title">
           </md-input-container>
           <md-input-container>
             <label for="price">Price</label>
-            <input type="text" id="price" md-autofocus>
+            <input type="text" id="price" md-autofocus ng-model="classified.price">
           </md-input-container>
           <md-input-container>
             <label for="description">Description</label>
-            <input type="text" id="description" md-autofocus>
+            <input type="text" id="description" md-autofocus ng-model="classified.description">
           </md-input-container>
           <md-input-container>
             <label for="image">Image URL</label>
-            <input type="text" id="image" md-autofocus>
+            <input type="text" id="image" md-autofocus ng-model="classified.image">
           </md-input-container>
-          <md-button class="md-primary">
+          <md-button class="md-primary" ng-click="saveClassified(classified)">
             Save
           </md-button>
           <md-button class="md-primary">
@@ -86,9 +86,9 @@
           </div>
 
           <div class="classified-contact" ng-show="showContact" >
-            <p><md-icon class="mdi mdi-account"></md-icon>{{ classified.first_name + ' ' + classified.last_name }}</p>
-            <p><md-icon class="mdi mdi-phone"></md-icon>{{ classified.phone }}</p>
-            <p><md-icon class="mdi mdi-email"></md-icon>{{ classified.email }}</p>
+            <p><md-icon class="mdi mdi-account"></md-icon>{{ classified.contact.name }}</p>
+            <p><md-icon class="mdi mdi-phone"></md-icon>{{ classified.contact.phone }}</p>
+            <p><md-icon class="mdi mdi-email"></md-icon>{{ classified.contact.email }}</p>
           </div>
 
 
