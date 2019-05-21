@@ -1,0 +1,131 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+      <p><strong>Movie Poster Deals</strong></p>
+      <md-button ng-click="vm.openSidebar()">
+        <md-icon class="mdi mdi-plus-circle"></md-icon>
+        New Classified
+      </md-button>
+      <md-button ng-click="showFilters = !showFilters">
+        <md-icon class="mdi mdi-magnify"></md-icon>
+        Show Filters
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <div
+    class="filters"
+    layout="row"
+    layout-align="center center"
+    layout-margin
+    ng-show="showFilters">
+
+    <md-input-container layout="row">
+      <label>Enter Search Term</label>
+      <input type="text" ng-model="classifiedsFilter">
+    </md-input-container>
+
+    <md-input-container>
+      <label>Genre</label>
+      <md-select ng-model="genre">
+        <md-option ng-repeat="genre in vm.genres" value="{{ genre }}">
+          {{ genre }}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <div layout="row">
+        <md-button
+          class="md-warn"
+          ng-click="genre = ''; classifiedsFilter = ''"
+        >
+          Clear
+        </md-button>
+    </div>
+  </div>
+
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar>
+      <h1 class="md-toolbar-tools">Add a Classified</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <form>
+        <md-input-container>
+          <label for="title">Title</label>
+          <input type="text" id="title" md-autofocus
+            ng-model="vm.classified.movie_title">
+        </md-input-container>
+        <md-input-container>
+          <label for="price">Price</label>
+          <input type="text" id="price" md-autofocus
+            ng-model="vm.classified.price">
+        </md-input-container>
+        <md-input-container>
+          <label for="description">Description</label>
+          <input type="text" id="description" md-autofocus
+            ng-model="vm.classified.description">
+        </md-input-container>
+        <md-input-container>
+          <label for="image">Image URL</label>
+          <input type="text" id="image" md-autofocus
+            ng-model="vm.classified.image">
+        </md-input-container>
+        <md-button class="md-primary" ng-if="!editing"
+          ng-click="vm.createClassified(vm.classified)">
+          Save
+        </md-button>
+        <md-button ng-click="vm.saveEdit()" class="md-primary" ng-if="vm.editing">
+          Save Edit
+        </md-button>
+        <md-button class="md-warn" ng-click="vm.closeSidebar()">
+          Cancel
+        </md-button>
+      </form>
+
+      <pre>{{ classified | json }}</pre>
+    </md-content>
+  </md-sidenav>
+
+  <md-content class="md-padding" layout="row" layout-align="center"
+    layout-wrap>
+    <md-card class="classified" ng-repeat="classified in vm.classifieds | filter: classifiedsFilter | filter: genre" flex="30">
+      <img ng-src="{{ classified.image }}" alt="{{ classified.movie_title}}" style="border-top-left-radius: 4px; border-top-right-radius: 4px">
+      <md-card-content>
+
+        <div layout="row">
+          <md-button ng-click="showContact= true" ng-show="!showContact">Contact</md-button>
+          <md-button ng-click="showContact= false" ng-show="showContact">Details</md-button>
+          <md-button ng-click="showAdmin= true" ng-show="!showAdmin">Show
+            Admin</md-button>
+          <md-button ng-click="showAdmin= false" ng-show="showAdmin">Close
+            Admin</md-button>
+        </div>
+
+        <div class="classified-admin" ng-if="showAdmin">
+          <h3>Admin</h3>
+          <div layout="row">
+            <md-button ng-click="vm.editClassified(vm.classified)"
+              ng-class="md-primary">Edit</md-button>
+            <md-button ng-click="vm.deleteClassified($event, vm.classified)"
+              class="md-warn">Delete</md-button>
+          </div>
+        </div>
+
+        <div class="classified-info" ng-show="!showContact">
+          <h2 class="md-title">{{ classified.movie_title }}</h2>
+          <h4>{{ classified.genres.join(', ') }}</h4>
+          <h4>{{ classified.price | currency }}</h4>
+          <p>{{ classified.description }}</p>
+        </div>
+
+        <div class="classified-contact" ng-show="showContact">
+          <p><md-icon class="mdi mdi-account"></md-icon>{{
+            classified.contact.name }}</p>
+          <p><md-icon class="mdi mdi-phone"></md-icon>{{
+            classified.contact.phone }}</p>
+          <p><md-icon class="mdi mdi-email"></md-icon>{{
+            classified.contact.email }}</p>
+        </div>
+
+      </md-card-content>
+    </md-card>
+  </md-content>

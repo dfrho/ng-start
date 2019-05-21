@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@uirouter/core@5.0.23":
+  version "5.0.23"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.23.tgz#363b4bea635a1b48900dc7e65793a65a3b58a79e"
+  integrity sha512-rwFOH++z/KY8y+h0IOpQ5uC8Nim6E0EBCQrIjhVCr+XKYXgpK+VdtuOLFdogvbJ3AAi5Z7ei00qdEr7Did5CAg==
+
 angular-animate@^1.7.8:
   version "1.7.8"
   resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.8.tgz#c95f237efe7ecfe0e6003adb5e2c7ef0e5a2b9d4"
@@ -16,6 +21,13 @@ angular-material@^1.1.18:
   version "1.1.18"
   resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.18.tgz#91976b9df06a66e6627c6bf4ce074c10daa3d998"
   integrity sha512-a+9Jzg4WF10G3vMbLCp5LSbmroeEbEYvzQoYVpWcXIgOUmnuOjxsNDPL73uNWOE97wOtEcFWxKF2wcP8zgixbA==
+
+angular-ui-router@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.22.tgz#54a88a06baba576e186fa1b4d5aac913eb4ccb08"
+  integrity sha512-cuq0+Di6spKEIQ1aZCGORPU9uZzJRFzuiMQDB2vLUDlo1DS8tR8/KxlThqmz6iw+8KtmUArI+5IMINSp/jwUKg==
+  dependencies:
+    "@uirouter/core" "5.0.23"
 
 angular@^1.7.8:
   version "1.7.8"
